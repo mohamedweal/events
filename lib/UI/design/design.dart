@@ -90,7 +90,8 @@ class AppThemes {
       selectedLabelStyle: TextStyle(color: Colors.white),
       unselectedLabelStyle: TextStyle(color: Colors.black),
     ),
-    bottomAppBarTheme: BottomAppBarTheme(color: AppColors.lightPrimary),
+    // ERROR FIXED HERE: Changed BottomAppBarTheme to BottomAppBarThemeData
+    bottomAppBarTheme: BottomAppBarThemeData(color: AppColors.lightPrimary),
     scaffoldBackgroundColor: AppColors.backgroundColor,
     inputDecorationTheme: InputDecorationTheme(
       floatingLabelBehavior: FloatingLabelBehavior.auto,
@@ -191,7 +192,8 @@ class AppThemes {
       selectedLabelStyle: TextStyle(color: Colors.white),
       unselectedLabelStyle: TextStyle(color: Colors.black),
     ),
-    bottomAppBarTheme: BottomAppBarTheme(color: AppColors.lightPrimary),
+    // ERROR FIXED HERE: Changed BottomAppBarTheme to BottomAppBarThemeData
+    bottomAppBarTheme: BottomAppBarThemeData(color: AppColors.lightPrimary),
     scaffoldBackgroundColor: AppColors.darkBackgroundColor,
   );
 }
