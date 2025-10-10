@@ -12,7 +12,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboarding_screen_title => 'Personalize Your Experience';
 
   @override
-  String get onboarding_screen_subtitle => 'Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.';
+  String get onboarding_screen_subtitle =>
+      'Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.';
 
   @override
   String get language => 'Language';

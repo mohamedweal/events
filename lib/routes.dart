@@ -1,7 +1,8 @@
 
 enum AppRoutes{
   HomeScreen("Home"),
-  OnBoarding("OnBoarding");
+  OnBoardingScreen("OnBoarding"),
+  RegisterScreen("Register"),;
 
   final String route;
   const AppRoutes(this.route);

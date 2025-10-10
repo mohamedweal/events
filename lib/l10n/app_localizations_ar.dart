@@ -12,7 +12,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get onboarding_screen_title => 'خصص تجربتك';
 
   @override
-  String get onboarding_screen_subtitle => 'اختر المظهر واللغة التي تفضلها للبدء بتجربة مريحة ومخصصة تناسب أسلوبك.';
+  String get onboarding_screen_subtitle =>
+      'اختر المظهر واللغة التي تفضلها للبدء بتجربة مريحة ومخصصة تناسب أسلوبك.';
 
   @override
   String get language => 'اللغة';
