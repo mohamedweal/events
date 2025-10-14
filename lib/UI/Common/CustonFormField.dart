@@ -25,10 +25,13 @@ class AppFormField extends StatefulWidget {
 }
 
 class _AppFormFieldState extends State<AppFormField> {
-  late bool secureText ;
- _AppFormFieldState(){
+   bool secureText = false;
+
+ @override
+  void initState() {
    secureText = widget.isPassword;
- }
+    super.initState();
+  }
 @override
   Widget build(BuildContext context) {
     return Padding(

@@ -23,9 +23,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   icons_plus: ^5.0.0
   animated_toggle_switch: ^0.8.5
-  firebase_core: ^4.1.1
-  firebase_auth: ^6.1.0
-  cloud_firestore: ^6.0.2
+  firebase_core: ^2.25.5  # Use the latest stable version
+  firebase_auth: ^4.17.5 # Use the latest stable version
+  cloud_firestore: ^4.15.5 # Use the latest stable version
 
 dev_dependencies:
   flutter_test:
