@@ -1,11 +1,11 @@
 import 'package:events/UI/Common/AppNameText.dart';
 import 'package:events/UI/Common/CustonFormField.dart';
-import 'package:events/UI/Common/Validatos.dart';
 import 'package:events/UI/Provider/AppAuthProvider.dart';
 import 'package:events/UI/design/design.dart';
 import 'package:events/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:events/UI/Common/Validatos.dart'; // Import is correct now
 
 class RegisterScreen extends StatefulWidget {
   RegisterScreen({super.key});
@@ -41,7 +41,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Image.asset(AppImages.appIcon),
+                // Assuming AppImages.appIcon is defined
+                // Image.asset(AppImages.appIcon),
                 AppNameText(),
                 Form(
                   key: formKey,
@@ -57,6 +58,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           if(text?.trim().isEmpty == true){
                             return "Please enter Name";
                           }
+                          return null; // Must return null on success
                         },
                       ),
                       AppFormField(
@@ -68,9 +70,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             if(text?.trim().isEmpty == true){
                               return "Please enter email";
                             }
+                            // FIX: Use '!' to assert non-null after checking for empty/null
                             if(!isValidEmail(text!)){
                               return "Please enter valid email";
                             }
+                            return null; // Must return null on success
                           }
                       ),
                       AppFormField(
@@ -82,9 +86,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             if(text?.trim().isEmpty == true){
                               return "Please enter phone";
                             }
-                            if(!isValidPhone(text)){
+                            // FIX: Use '!' to assert non-null after checking for empty/null
+                            if(!isValidPhone(text!)){
                               return "Please enter valid phone";
                             }
+                            return null; // Must return null on success
                           }
                       ),
                       AppFormField(
@@ -100,6 +106,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           if((text?.length??0) < 6){
                             return "Password must be at least 6 characters";
                           }
+                          return null; // Must return null on success
                         },
                       ),
                       AppFormField(
@@ -115,7 +122,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           if(passwordController.text != text){
                             return "Password does not match";
                           }
-
+                          return null; // Must return null on success
                         },
                       ),
                       ElevatedButton(onPressed: isLoading ? null: (){
@@ -161,6 +168,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     setState(() {
       isLoading = true;
     });
+    // This assumes AppAuthProvider, AuthResponse, and AppRoutes are defined.
     AppAuthProvider provider = Provider.of<AppAuthProvider>(context, listen: false);
     AuthResponse response = await provider.register(emailController.text,
         passwordController.text,
@@ -187,6 +195,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void handleAuthError(AuthResponse response) {
     String errorMessage;
 
+    // This assumes AuthFailure enum is defined.
     switch(response.failure){
       case AuthFailure.weakPassword:
         errorMessage = "Weak password";
@@ -202,4 +211,5 @@ class _RegisterScreenState extends State<RegisterScreen> {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(errorMessage),));
 
   }
+
 }

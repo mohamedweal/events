@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "531231672619",
-    "project_id": "device-streaming-9b5c6cc1",
-    "storage_bucket": "device-streaming-9b5c6cc1.firebasestorage.app"
+    "project_number": "962892648759",
+    "project_id": "events-app-new",
+    "storage_bucket": "events-app-new.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:531231672619:android:3c0aea6e52a7cd3d335d6e",
+        "mobilesdk_app_id": "1:962892648759:android:109d0aa3968409b2fd4ab2",
         "android_client_info": {
           "package_name": "com.example.events"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC-NYgGpauD4u14DxdV2vg2c1Tan1QRcIA"
+          "current_key": "AIzaSyC-7Lc5WzeFmDfo5ig7qs8Qi1YaGxfSEiM"
         }
       ],
       "services": {
