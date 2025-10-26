@@ -1,30 +1,34 @@
-// In lib/database/model/AppUser.dart
-class AppUser {
-  final String? id;
-  final String name;
-  final String phone;
-  final String email;
+class AppUser{
+  String? id;
+  String? name;
+  String? phone;
+  String? email;
+  List<String> favorites;
 
-  AppUser({this.id, required this.name, required this.phone, required this.email});
+  AppUser({
+    this.id,
+    this.name,
+    this.email,
+    this.phone,
+    this.favorites = const [],
+  });
 
-  // 1. Convert to a Firestore-safe Map
-  Map<String, dynamic> toMap() {
+  //named Constructor
+  AppUser.fromMap(Map<String, dynamic>? map) :
+        this(id: map?['id'],
+          name: map?['name'],
+          phone: map?['phone'],
+          email: map?['email'],
+          favorites: (map?['favorites'] as List<dynamic>)
+              .map((e) => e.toString(),).toList() ?? []
+      );
+  Map<String, dynamic> toMap(){
     return {
       'id': id,
       'name': name,
       'phone': phone,
       'email': email,
+      'favorites': favorites ?? []
     };
-  }
-
-  // 2. Create object from a Firestore Map
-  factory AppUser.fromMap(Map<String, dynamic> map) {
-    return AppUser(
-      // Ensure all types are explicitly cast as String
-      id: map['id'] as String?,
-      name: map['name'] as String,
-      phone: map['phone'] as String,
-      email: map['email'] as String,
-    );
   }
 }

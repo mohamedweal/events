@@ -186,7 +186,9 @@ class _HomeScreenState extends State<HomeScreen> {
             borderRadius: BorderRadius.circular(360),
             side: BorderSide(color: Colors.white, width: 4),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed(AppRoutes.AddEvent.name);
+          },
           child: Icon(Icons.add),
         ),
       ),

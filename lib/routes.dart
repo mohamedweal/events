@@ -4,4 +4,5 @@ enum AppRoutes {
   OnBoardingScreen,
   RegisterScreen,
   LoginScreen,
+  AddEvent,
 }

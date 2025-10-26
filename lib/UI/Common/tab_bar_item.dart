@@ -1,3 +1,4 @@
+
 import 'package:events/extensions/context-extension.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,22 +9,26 @@ class TabBarItem extends StatelessWidget {
   final IconData icon;
   final int index;
   final int currentIndex;
-  const TabBarItem({
+  bool reverseColors = false;
+  TabBarItem({
     super.key,
     required this.icon,
     required this.currentIndex,
     required this.title,
     required this.index,
+    this.reverseColors = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    var backgroundColor = reverseColors ? Colors.white   :  context.appColors.primary;
+    var contentColor = reverseColors ? context.appColors.primary : Colors.white  ;
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       decoration: BoxDecoration(
-        color: currentIndex == index ? Colors.white : Colors.transparent,
-        border: Border.all(color: Colors.white, width: 1),
+        color: currentIndex == index ?contentColor  : backgroundColor,
+        border: Border.all(color: contentColor, width: 1),
         borderRadius: BorderRadius.circular(46),
       ),
       child: Row(
@@ -31,8 +36,8 @@ class TabBarItem extends StatelessWidget {
           Icon(
             icon,
             color: currentIndex == index
-                ? context.appColors.primary
-                : Colors.white,
+                ?  backgroundColor: contentColor,
+            size: 16,
           ),
           SizedBox(width: 10),
           Text(
@@ -40,8 +45,8 @@ class TabBarItem extends StatelessWidget {
             style: TextStyle(
               fontFamily: GoogleFonts.inter().fontFamily,
               color: currentIndex == index
-                  ? context.appColors.primary
-                  : Colors.white,
+                  ? backgroundColor
+                  : contentColor,
             ),
           ),
         ],

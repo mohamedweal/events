@@ -4,6 +4,7 @@ import 'package:events/UI/Provider/ThemeProvider.dart';
 import 'package:events/UI/Screens/Home/HomeScreen.dart';
 import 'package:events/UI/Screens/Login/Login.dart';
 import 'package:events/UI/Screens/OnBoarding/Onboarding.dart';
+import 'package:events/UI/Screens/addEvent/AddEventScreen.dart';
 import 'package:events/UI/design/design.dart';
 import 'package:events/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.RegisterScreen.name : (context) => RegisterScreen(),
         AppRoutes.LoginScreen.name : (context) => LoginScreen(),
         AppRoutes.HomeScreen.name : (context) => HomeScreen(),
+        AppRoutes.AddEvent.name: (context) => AddEventScreen(),
       },
     );
   }
