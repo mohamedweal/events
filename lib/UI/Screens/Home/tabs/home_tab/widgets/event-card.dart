@@ -8,10 +8,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:events/database/EventsDao.dart';
 
-class EventCard extends StatelessWidget {
+class EventCard extends StatefulWidget {
   final Event event;
   const EventCard(this.event,{super.key});
 
+  @override
+  State<EventCard> createState() => _EventCardState();
+}
+
+class _EventCardState extends State<EventCard> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
@@ -23,7 +28,7 @@ class EventCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: context.appColors.primary, width: 1),
         image: DecorationImage(
-          image: AssetImage(event.getCategoryImage()),
+          image: AssetImage(widget.event.getCategoryImage()),
           fit: BoxFit.cover,
         ),
       ),
@@ -39,7 +44,7 @@ class EventCard extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  '${event.date?.day}',
+                  '${widget.event.date?.day}',
                   style: context.fonts.bodyMedium?.copyWith(
                     fontFamily: GoogleFonts.inter().fontFamily,
                     color: context.appColors.primary,
@@ -47,7 +52,7 @@ class EventCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  event.date?.formatMonth()??"",
+                  widget.event.date?.formatMonth()??"",
                   style: context.fonts.bodyMedium?.copyWith(
                     fontFamily: GoogleFonts.inter().fontFamily,
                     color: context.appColors.primary,
@@ -68,7 +73,7 @@ class EventCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  event.title??"",
+                  widget.event.title??"",
                   style: context.fonts.bodyMedium?.copyWith(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -76,12 +81,33 @@ class EventCard extends StatelessWidget {
                     fontSize: 14,
                   ),
                 ),
-                InkWell(onTap: () {}, child: Icon(Icons.favorite)),
+                InkWell(onTap: () {
+                  toggleFavorite(
+                      widget.event);
+                }, child:
+                widget.event.isFavorite ? Icon(Icons.favorite)
+                    : Icon(Icons.favorite_border),
+                ),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  void toggleFavorite( Event event)async{
+    AppAuthProvider provider = Provider.of<AppAuthProvider>(context, listen: false);
+    var user = provider.getUser();
+    var isFavorite = provider.isFavorite(event);
+    if(isFavorite){
+      user =  await UsersDao.removeEventFromFavorites(provider.getUser()!,event.id);
+    }else{
+      user = await UsersDao.addEventToFavorites(provider.getUser()!,event.id,);
+    }
+    provider.updateFavorites(user.favorites);
+    setState(() {
+      widget.event.isFavorite = !isFavorite;
+    });
   }
 }

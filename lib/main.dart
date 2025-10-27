@@ -52,12 +52,13 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: languageProvider.getSelectedLocale(),
+      debugShowCheckedModeBanner: false,
       routes: {
         AppRoutes.OnBoardingScreen.name: (context) => const OnBoardingScreen(),
         AppRoutes.RegisterScreen.name : (context) => RegisterScreen(),
         AppRoutes.LoginScreen.name : (context) => LoginScreen(),
         AppRoutes.HomeScreen.name : (context) => HomeScreen(),
-        AppRoutes.AddEvent.name: (context) => AddEventScreen(),
+        AppRoutes.AddEvent.name : (context) => AddEventScreen(),
       },
     );
   }

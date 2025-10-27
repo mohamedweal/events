@@ -36,8 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
               horizontal: 16),
           child: Column(
             children: [
-              // Assuming AppImages.appIcon is defined in 'design.dart'
-              // Image.asset(AppImages.appIcon),
+              Image.asset(AppImages.appIcon),
               AppNameText(),
               Form(
                 key: formKey,
@@ -53,12 +52,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           if(text?.trim().isEmpty == true){
                             return "Please enter email";
                           }
-                          // FIX: Use '!' to assert non-null because we've already checked for empty/null
-                          // This resolves the type mismatch if isValidEmail expects a non-nullable String.
-                          if(!isValidEmail(text!)){
+                          if(!isValidEmail(text)){
                             return "Please enter valid email";
                           }
-                          return null; // Must return null on success
                         }
                     ),
 
@@ -75,7 +71,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         if((text?.length??0) < 6){
                           return "Password must be at least 6 characters";
                         }
-                        return null; // Must return null on success
                       },
                     ),
                     ElevatedButton(onPressed: isLoading ? null: (){
@@ -120,7 +115,6 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       isLoading = true;
     });
-    // These types (AppAuthProvider, AuthResponse, AuthFailure) must be defined and imported elsewhere.
     AppAuthProvider provider = Provider.of<AppAuthProvider>(context, listen: false);
     AuthResponse response = await provider.login(
         emailController.text,
@@ -152,20 +146,12 @@ class _LoginScreenState extends State<LoginScreen> {
       case AuthFailure.invalidCredentials:
         errorMessage = "Wrong Email or password";
         break;
-      case AuthFailure.userDisabled: // NEW
-        errorMessage = "Your account has been disabled.";
-        break;
-      case AuthFailure.tooManyRequests: // NEW
-        errorMessage = "Too many failed attempts. Try again later.";
-        break;
-      case AuthFailure.networkError: // NEW
-        errorMessage = "Network error. Check your connection.";
-        break;
       default:
-        errorMessage = "something went wrong"; // This should now only happen for truly unhandled errors
+        errorMessage = "something went wrong";
         break;
     }
 
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(errorMessage),));
+
   }
 }
