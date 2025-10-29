@@ -6,4 +6,5 @@ enum AppRoutes {
   LoginScreen,
   AddEvent,
   maps,
+  forgetPassword,
 }

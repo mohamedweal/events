@@ -1,6 +1,5 @@
 import 'package:events/UI/Common/AppNameText.dart';
 import 'package:events/UI/Common/CustonFormField.dart';
-import 'package:events/UI/Common/ThemeSwitch.dart';
 import 'package:events/UI/Common/googleSignButton.dart';
 import 'package:events/UI/Common/language-switcher.dart';
 import 'package:events/UI/Provider/AppAuthProvider.dart';
@@ -9,6 +8,7 @@ import 'package:events/database/firebase_service.dart';
 import 'package:events/l10n/app_localizations.dart';
 import 'package:events/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:events/UI/Common/Validatos.dart';
 
@@ -73,6 +73,30 @@ class _LoginScreenState extends State<LoginScreen> {
                       }
                     },
                   ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 20),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.forgetPassword.name,
+                          );
+                        },
+                        child: Text(
+                          "Forgot Password ?",
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: AppColors.lightPrimary,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: GoogleFonts.inter().fontFamily,
+                              ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 12),
                   ElevatedButton(
                     onPressed: isLoading
                         ? null
@@ -128,31 +152,29 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      Expanded(child: Divider(
-                        color: AppColors.lightPrimary,
-                        thickness: 1,
-                        indent: 10,
-                        endIndent: 20,
-                        height: 35,
-                      ))
+                      Expanded(
+                        child: Divider(
+                          color: AppColors.lightPrimary,
+                          thickness: 1,
+                          indent: 10,
+                          endIndent: 20,
+                          height: 35,
+                        ),
+                      ),
                     ],
                   ),
-                  SizedBox(height: 24,),
-                  GoogleSignInButton(onPressed: ()async{
-                   var user = await fireStoreService.signInWithGoogle();
-                    print("Google Sign-In Tapped!");
-                  }),
-                  SizedBox(height: 24,),
+                  SizedBox(height: 24),
+                  GoogleSignInButton(
+                    onPressed: () async {
+                      var user = await fireStoreService.signInWithGoogle();
+                      print("Google Sign-In Tapped!");
+                    },
+                  ),
+                  SizedBox(height: 24),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-
-                      Spacer(),
-                      LanguageSwitcher(),
-                      Spacer(),
-                    ],
+                    children: [Spacer(), LanguageSwitcher(), Spacer()],
                   ),
-
                 ],
               ),
             ),
@@ -214,4 +236,3 @@ class _LoginScreenState extends State<LoginScreen> {
     ).showSnackBar(SnackBar(content: Text(errorMessage)));
   }
 }
-

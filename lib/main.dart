@@ -15,6 +15,7 @@ import 'package:events/UI/Provider/AppAuthProvider.dart';
 import 'package:events/UI/Screens/Register/RegisterScreen.dart';
 import 'package:events/routes.dart';
 import 'firebase_options.dart';
+import 'package:events/UI/Screens/Login/forgetPassword.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.LoginScreen.name : (context) => LoginScreen(),
         AppRoutes.HomeScreen.name : (context) => HomeScreen(),
         AppRoutes.AddEvent.name : (context) => AddEventScreen(),
+        AppRoutes.forgetPassword.name: (context) => forgetPassword(),
       },
     );
   }
