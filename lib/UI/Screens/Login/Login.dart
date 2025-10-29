@@ -1,9 +1,12 @@
 import 'package:events/UI/Common/AppNameText.dart';
 import 'package:events/UI/Common/CustonFormField.dart';
+import 'package:events/UI/Common/ThemeSwitch.dart';
 import 'package:events/UI/Common/googleSignButton.dart';
+import 'package:events/UI/Common/language-switcher.dart';
 import 'package:events/UI/Provider/AppAuthProvider.dart';
 import 'package:events/UI/design/design.dart';
 import 'package:events/database/firebase_service.dart';
+import 'package:events/l10n/app_localizations.dart';
 import 'package:events/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -140,6 +143,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     print("Google Sign-In Tapped!");
                   }),
                   SizedBox(height: 24,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+
+                      Spacer(),
+                      LanguageSwitcher(),
+                      Spacer(),
+                    ],
+                  ),
+
                 ],
               ),
             ),
