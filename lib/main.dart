@@ -2,6 +2,7 @@ import 'package:events/UI/Common/AppSharedPrefrences.dart';
 import 'package:events/UI/Provider/LanguageProvider.dart';
 import 'package:events/UI/Provider/ThemeProvider.dart';
 import 'package:events/UI/Screens/Home/HomeScreen.dart';
+import 'package:events/UI/Screens/Home/tabs/map/map.dart';
 import 'package:events/UI/Screens/Login/Login.dart';
 import 'package:events/UI/Screens/OnBoarding/Onboarding.dart';
 import 'package:events/UI/Screens/addEvent/AddEventScreen.dart';
@@ -47,8 +48,8 @@ class MyApp extends StatelessWidget {
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
       themeMode: provider.getSelectedThemeMode(),
-      initialRoute:
-      authProvider.isLoggedInBefore()? AppRoutes.HomeScreen.name : AppRoutes.LoginScreen.name,
+       initialRoute:
+       authProvider.isLoggedInBefore()? AppRoutes.HomeScreen.name : AppRoutes.LoginScreen.name,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: languageProvider.getSelectedLocale(),

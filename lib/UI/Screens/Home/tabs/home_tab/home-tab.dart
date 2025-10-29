@@ -16,16 +16,6 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
 
-  // @override
-  // void didUpdateWidget(covariant HomeTab oldWidget) {
-  //   super.didUpdateWidget(oldWidget);
-  //   if(widget.selectedCategory != oldWidget.selectedCategory){
-  //     setState(() {
-  //       print("old category -> ${oldWidget.selectedCategory.title}");
-  //       print("new category -> ${widget.selectedCategory.title}");
-  //     });
-  //   }
-  // }
   int selectedCategoryIndex = 0;
   List<Category> allCategories = Category.getCategories(includeAll: true);
 

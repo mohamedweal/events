@@ -2,6 +2,7 @@
 import 'package:events/UI/Common/tab_bar_item.dart';
 import 'package:events/UI/Provider/AppAuthProvider.dart';
 import 'package:events/UI/Screens/Home/tabs/fav/fav.dart';
+import 'package:events/UI/Screens/Home/tabs/map/map.dart';
 import 'package:events/UI/Screens/Home/tabs/home_tab/home-tab.dart';
 import 'package:events/extensions/context-extension.dart';
 import 'package:events/routes.dart';
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     tabs = [
       HomeTab(),
-      HomeTab(),
+      MapTab(),
       FavTab(),
       HomeTab(),
     ];

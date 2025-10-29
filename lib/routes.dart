@@ -5,4 +5,5 @@ enum AppRoutes {
   RegisterScreen,
   LoginScreen,
   AddEvent,
+  maps,
 }
